@@ -1,0 +1,72 @@
+﻿<Application x:Class="DBFirst.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:DBFirst" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:System="http://schemas.microsoft.com/winfx/2009/xaml"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ComboBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PasswordBox.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.ListBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.DatePicker.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Slider.xaml" />
+                <materialDesign:BundledTheme BaseTheme="Light"/>
+                <ResourceDictionary>
+                    <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="#dfeaeb"/>
+                    <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#0ec0b4"/>
+                    <SolidColorBrush x:Key="SecondaryHueMidBrush" Color="#0bb4c4"/>
+                    <SolidColorBrush x:Key="MaterialDesign.Brush.Primary.Foreground" Color="#000"/>
+                    <SolidColorBrush x:Key="MaterialDesign.Brush.Secondary" Color="#0bb4c4"/>
+                    <SolidColorBrush x:Key="MaterialDesign.Brush.Secondary.Foreground" Color="#fff"/>
+                    <SolidColorBrush x:Key="MaterialDesign.Brush.Primary" Color="#0ec0b4"/>
+                    <SolidColorBrush x:Key="MaterialDesignComboBoxPopupBackground" Color="#dfeaeb"/>
+                </ResourceDictionary>
+
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
+
+                <Setter Property="AutomationProperties.Name" Value="" />
+            </Style>
+
+            <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignTextBox}">
+                <Setter Property="AutomationProperties.Name" Value="" />
+            </Style>
+
+            <Style x:Key="ValidationErrorText" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="FontWeight" Value="SemiBold"/>
+                <Setter Property="Foreground" Value="Red"/>
+                <Setter Property="Margin" Value="5,2,0,0"/>
+            </Style>
+
+            <Style TargetType="TextBlock" BasedOn="{StaticResource MaterialDesignHelperTextBlock}" x:Key="val">
+
+                <Setter Property="AutomationProperties.Name" Value="" />
+                <Setter Property="FontSize" Value="20"/>
+            </Style>
+
+            <Style TargetType="ComboBox" BasedOn="{StaticResource MaterialDesignComboBox}">
+                <Setter Property="AutomationProperties.Name" Value="" />
+            </Style>
+            <Style TargetType="PasswordBox" BasedOn="{StaticResource MaterialDesignPasswordBox}">
+                <Setter Property="AutomationProperties.Name" Value="" />
+            </Style>
+
+            <Style TargetType="DatePicker" BasedOn="{StaticResource MaterialDesignDatePicker}">
+                <Setter Property="AutomationProperties.Name" Value="" />
+            </Style>
+
+            <Style TargetType="DatePickerTextBox" BasedOn="{StaticResource MaterialDesignComboBoxEditableTextBox}">
+                <Setter Property="AutomationProperties.Name" Value="" />
+            </Style>
+
+            <Style TargetType="Slider" BasedOn="{StaticResource MaterialDesignSlider}"/>
+            
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
