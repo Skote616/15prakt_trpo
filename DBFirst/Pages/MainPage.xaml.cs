@@ -159,22 +159,42 @@ namespace DBFirst.Pages
 
         private void AddProduct(object sender, RoutedEventArgs e)
         {
-            Product pr=new Product();
-            NavigationService.Navigate(new EditPage(pr));
+            if (isAdmin)
+            {
+                Product pr = new Product();
+                NavigationService.Navigate(new EditPage(pr));
+            }
+            else
+            { MessageBox.Show("У вас недостаточно прав"); }
         }
 
         private void ChangeCategory(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new CategoryPage());
+            if (isAdmin)
+            {
+                NavigationService.Navigate(new CategoryPage());
+            }
+            else
+            { MessageBox.Show("У вас недостаточно прав"); }
         }
 
         private void ChangeTags(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new TagsPage());
+            if (isAdmin)
+            {
+                NavigationService.Navigate(new TagsPage());
+            }
+            else
+            { MessageBox.Show("У вас недостаточно прав"); }
         }
         private void ChangeBrands(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new BrandsPage());
+            if (isAdmin)
+            {
+                NavigationService.Navigate(new BrandsPage());
+            }
+            else
+            { MessageBox.Show("У вас недостаточно прав"); }
         }
     }
 }
