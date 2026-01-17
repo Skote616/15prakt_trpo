@@ -25,13 +25,13 @@ public partial class EshopAzarenkoContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=DESKTOP-SQF3KQP\\SQLEXPRESS;Database=Eshop;Trusted_Connection=True;TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("Server=sql.ects;Database=Eshop1;User Id = student_07; Password=student_07;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Brand>(entity =>
         {
-            entity.ToTable("brands$");
+            entity.ToTable("brands");
 
             entity.Property(e => e.Id)
                 .ValueGeneratedNever()
@@ -43,7 +43,7 @@ public partial class EshopAzarenkoContext : DbContext
 
         modelBuilder.Entity<Category>(entity =>
         {
-            entity.ToTable("categories$");
+            entity.ToTable("categories");
 
             entity.Property(e => e.Id)
                 .ValueGeneratedNever()
@@ -55,7 +55,7 @@ public partial class EshopAzarenkoContext : DbContext
 
         modelBuilder.Entity<Product>(entity =>
         {
-            entity.ToTable("products$");
+            entity.ToTable("products");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.BrandId).HasColumnName("brand_id");
@@ -74,12 +74,12 @@ public partial class EshopAzarenkoContext : DbContext
             entity.HasOne(d => d.Brand).WithMany(p => p.Products)
                 .HasForeignKey(d => d.BrandId)
                 .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("FK_products$_brands$");
+                .HasConstraintName("FK_products_brands");
 
             entity.HasOne(d => d.Category).WithMany(p => p.Products)
                 .HasForeignKey(d => d.CategoryId)
                 .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("FK_products$_categories$");
+                .HasConstraintName("FK_products_categories");
 
             entity.HasMany(d => d.Tags).WithMany(p => p.Products)
                 .UsingEntity<Dictionary<string, object>>(
@@ -87,15 +87,15 @@ public partial class EshopAzarenkoContext : DbContext
                     r => r.HasOne<Tag>().WithMany()
                         .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .HasConstraintName("FK_product_tags$_tags$"),
+                        .HasConstraintName("FK_product_tags_tags"),
                     l => l.HasOne<Product>().WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .HasConstraintName("FK_product_tags$_products$"),
+                        .HasConstraintName("FK_product_tags_products"),
                     j =>
                     {
                         j.HasKey("ProductId", "TagId");
-                        j.ToTable("product_tags$");
+                        j.ToTable("product_tags");
                         j.IndexerProperty<int>("ProductId").HasColumnName("product_id");
                         j.IndexerProperty<int>("TagId").HasColumnName("tag_id");
                     });
@@ -103,7 +103,7 @@ public partial class EshopAzarenkoContext : DbContext
 
         modelBuilder.Entity<Tag>(entity =>
         {
-            entity.ToTable("tags$");
+            entity.ToTable("tags");
 
             entity.Property(e => e.Id)
                 .ValueGeneratedNever()
