@@ -22,7 +22,13 @@ namespace DBFirst.Validators
                 return new ValidationResult(false, "Должно быть десятичное число");
             }
             else
-                return ValidationResult.ValidResult;
+                if(Convert.ToDouble(input)<0)
+                {
+                  return new ValidationResult(false, "Число не может быть отрицательным");
+                }
+                else
+                    return ValidationResult.ValidResult;
+            
         }
     }
 }

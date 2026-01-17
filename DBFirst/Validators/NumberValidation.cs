@@ -21,7 +21,7 @@ namespace DBFirst.Validators
                     return new ValidationResult(false, "В строке должы быть только цифры");
                 }
             }
-
+            
 
             return ValidationResult.ValidResult;
         }
