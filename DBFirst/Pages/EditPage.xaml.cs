@@ -117,12 +117,11 @@ namespace DBFirst.Pages
                 var br = context.Brands.ToList( );
                 prod.Brand = br [BrandCombo.SelectedIndex];
                 prod.Category = cat [ CategoryCombo.SelectedIndex ];
-                prod.Tags = SelectedTags.ToList( );
-                foreach (var tag in prod.Tags)
-                {
-                    if(SelectedTags.Contains(tag))
-                        SelectedTags.Remove(tag);
-                }
+                prod.Tags.Clear();
+                SelectedTags.Clear();
+                foreach (Tag tag in TagsListBox.SelectedItems)
+                    SelectedTags.Add(tag);
+                prod.Tags = SelectedTags.ToList();
                 prod.Rating = Math.Round(prod.Rating, 1);
                 context.Products.Update(prod);
                 MessageBox.Show($"{prod.Name} изменен");
