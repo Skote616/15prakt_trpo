@@ -88,7 +88,7 @@ namespace DBFirst.Pages
                     Brand = brands [ BrandCombo.SelectedIndex ],
                     Stock = prod.Stock,
                     Tags = SelectedTags.ToList( ),
-                    Rating = prod.Rating,
+                    Rating = Math.Round(prod.Rating,1),
                     CreatedAt = DateOnly.FromDateTime(DateTime.Today),
                     CategoryId = CategoryCombo.SelectedIndex + 1,
                     BrandId = BrandCombo.SelectedIndex + 1,
@@ -118,9 +118,15 @@ namespace DBFirst.Pages
                 prod.Brand = br [BrandCombo.SelectedIndex];
                 prod.Category = cat [ CategoryCombo.SelectedIndex ];
                 prod.Tags = SelectedTags.ToList( );
+                foreach (var tag in prod.Tags)
+                {
+                    if(SelectedTags.Contains(tag))
+                        SelectedTags.Remove(tag);
+                }
                 prod.Rating = Math.Round(prod.Rating, 1);
                 context.Products.Update(prod);
                 MessageBox.Show($"{prod.Name} изменен");
+                
             }
             context.SaveChanges( );
             NavigationService.Navigate(new MainPage(1));

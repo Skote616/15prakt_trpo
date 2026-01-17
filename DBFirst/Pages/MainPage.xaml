@@ -152,7 +152,7 @@
                                 <TextBlock FontSize="14" FontWeight="Bold" Text="{Binding Name}"/>
                                 <TextBlock Margin="0,0,0,10">
                                     <Run FontSize="14" Foreground="Orange" Text="★"/>
-                                    <Run Text="{Binding Rating}"/>
+                                    <Run Text="{Binding Rating, StringFormat={}{0:F1}}"/>
                                 </TextBlock>
                                 <TextBlock Margin="0,0,0,10" Text="{Binding CategoryId, Converter={StaticResource categoryConverter}}"/>
                                 <TextBlock Margin="0,0,0,10">
