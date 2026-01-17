@@ -135,7 +135,7 @@
                             <StackPanel Grid.Column="1">
                                 <TextBlock HorizontalAlignment="Right" Margin="0,0,0,10">
                                 <Run Text="Цена "/>
-                                <Run Text="{Binding Price}"/>
+                                <Run Text="{Binding Price, StringFormat={}{0:F2}}"/>
                                 </TextBlock>
                                 <TextBlock Margin="0,0,0,10"/>
                                 <TextBlock Margin="0,0,0,4"></TextBlock>

@@ -83,7 +83,7 @@ namespace DBFirst.Pages
                 {
                     Name = prod.Name,
                     Description = prod.Description,
-                    Price = prod.Price,
+                    Price = Math.Round(prod.Price,2),
                     Category = categories [ CategoryCombo.SelectedIndex ],
                     Brand = brands [ BrandCombo.SelectedIndex ],
                     Stock = prod.Stock,
