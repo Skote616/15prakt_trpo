@@ -71,6 +71,7 @@ namespace DBFirst.Pages
             products.Clear();
             foreach (var form in db.Products.ToList())
                 products.Add(form);
+            
         }
 
         public bool FilterForms(object obj)
@@ -103,7 +104,8 @@ namespace DBFirst.Pages
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            if (combo.SelectedItem == null)
+                return;
             formsView.SortDescriptions.Clear();
             var cb = (ComboBox) sender;
             var selected = (ComboBoxItem) cb.SelectedItem;
@@ -129,6 +131,8 @@ namespace DBFirst.Pages
                     formsView.SortDescriptions.Add(new SortDescription("Stock",
                     ListSortDirection.Descending));
                     break;
+                default:
+                    break;
             }
             formsView.Refresh();
 
@@ -136,11 +140,16 @@ namespace DBFirst.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            combo.SelectedIndex = 5;
+
+            formsView.SortDescriptions.Clear();
+            combo.SelectedItem = null;
             f1.Text = "";
             f2.Text = "";
             f3.Text = "";
-            f4.Text = "";
+            f2.Text = "";
+
+            
+            LoadList();
         }
 
         private void EditCard(object sender, MouseButtonEventArgs e)
